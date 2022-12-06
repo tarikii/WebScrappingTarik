@@ -11,6 +11,10 @@ public class Character {
     String abilitiesName;
     String fpsClass;
 
+    String strategies;
+
+    String description;
+
     public Character(String name, String variantsName, String image, String health, String primaryWeapon, String primaryWeaponDamage, String abilitiesName, String fpsClass) {
         this.name = name;
         this.variantsName = variantsName;
@@ -23,6 +27,11 @@ public class Character {
     }
 
     public Character(String name, String health, String primaryWeapon, String primaryWeaponDamage) {
+    }
+
+    public Character(String strategies, String description) {
+        this.strategies = strategies;
+        this.description = description;
     }
 
     public String getName() {
@@ -87,5 +96,21 @@ public class Character {
 
     public void setFpsClass(String fpsClass) {
         this.fpsClass = fpsClass;
+    }
+
+    public String getStrategies() {
+        return strategies;
+    }
+
+    public void setStrategies(String strategies) {
+        this.strategies = strategies;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
