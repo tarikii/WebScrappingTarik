@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Character {
     String name;
     String variantsName;
@@ -11,9 +8,11 @@ public class Character {
     String abilitiesName;
     String fpsClass;
 
-    String strategies;
+    String rarities;
 
     String description;
+
+    String ammo;
 
     public Character(String name, String variantsName, String image, String health, String primaryWeapon, String primaryWeaponDamage, String abilitiesName, String fpsClass) {
         this.name = name;
@@ -29,9 +28,13 @@ public class Character {
     public Character(String name, String health, String primaryWeapon, String primaryWeaponDamage) {
     }
 
-    public Character(String strategies, String description) {
-        this.strategies = strategies;
+    public Character(String name, String description, String health, String weapon, String ammo, String rarity ) {
+        this.name = name;
         this.description = description;
+        this.health = health;
+        this.primaryWeapon = weapon;
+        this.ammo = ammo;
+        this.rarities = rarity;
     }
 
     public String getName() {
@@ -98,12 +101,12 @@ public class Character {
         this.fpsClass = fpsClass;
     }
 
-    public String getStrategies() {
-        return strategies;
+    public String getRarities() {
+        return rarities;
     }
 
-    public void setStrategies(String strategies) {
-        this.strategies = strategies;
+    public void setRarities(String rarities) {
+        this.rarities = rarities;
     }
 
     public String getDescription() {
@@ -112,5 +115,29 @@ public class Character {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getAmmo() {
+        return ammo;
+    }
+
+    public void setAmmo(String ammo) {
+        this.ammo = ammo;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "name='" + name + '\'' +
+                ", variantsName='" + variantsName + '\'' +
+                ", image='" + image + '\'' +
+                ", health='" + health + '\'' +
+                ", primaryWeapon='" + primaryWeapon + '\'' +
+                ", primaryWeaponDamage='" + primaryWeaponDamage + '\'' +
+                ", abilitiesName='" + abilitiesName + '\'' +
+                ", fpsClass='" + fpsClass + '\'' +
+                ", strategies='" + rarities + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

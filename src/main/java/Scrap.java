@@ -1,3 +1,4 @@
+import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -38,15 +39,18 @@ public class Scrap {
         if (opcionScrap == 1) {
             // Ir a la pagina Web.
             driver.get("https://plantsvszombies.fandom.com/wiki/Plants_(PvZ:_GW2)");
-            // Este es la lista de links.
-            List<String> li;
-            // Este es la lista de campeones.
-            List<Plant> zombies = new ArrayList<>();
+            // Este es la lista de las URL.
+            List<String> urls;
+            // Este es la lista de characters(link).
+            List<Character> characterList = new ArrayList<>();
             // Este es la variable que tiene el valor que usas para la espera.
             WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
             clicarBotonCookie(driver, driverWait);
             getCharacterInfoTable(driver);
             //getVariantInfoTable(driver);
+            urls = getCharactersURL(driver);
+            getCharacterInfoURL(driver,urls,driverWait);
+
         } else if (opcionScrap == 2) {
             // Ir a la pagina Web.
             driver.get("https://plantsvszombies.fandom.com/wiki/Zombies_(PvZ:_GW2)");
@@ -76,7 +80,7 @@ public class Scrap {
     }
 
     public List<String> getCharactersURL(WebDriver driver){
-        List<WebElement> links = driver.findElements(new By.ByXPath("/html/body/div[4]/div[3]/div[2]/main/div[3]/div[2]/div/div[2]/div/table/tbody/tr//th/a"));
+        List<WebElement> links = driver.findElements(new By.ByXPath("/html/body/div[4]/div[3]/div[2]/main/div[3]/div[2]/div/div[2]/div//table/tbody//tr//th/a"));
         List<String> urls = new ArrayList<>();
         int counting = 0;
 
@@ -86,26 +90,85 @@ public class Scrap {
                 urls.add(link.getAttribute("href"));
             }
         }
+        urls.forEach(System.out::println);
         return urls;
     }
 
-    public List<Character> getCharacterInfoURL(WebDriver driver, List<String> urls){
-        String descriptions, strategies;
-        WebElement description, strategy;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public List<Character> getCharacterInfoURL(WebDriver driver, List<String> urls, WebDriverWait wait){
+        String names,  healths, weapons, ammos, rarities;
+        String descriptions = "";
+
 
         for(String info : urls){
             driver.get(info);
+            WebElement informationCube = driver.findElement(new By.ByCssSelector(".portable-infobox"));
             try{
-                wait.until(ExpectedConditions.elementToBeClickable(new By.ByClassName("NN0_TB_DIsNmMHgJWgT7U")));
-            }catch (Exception e){
-                description = driver.findElement(new By.ByXPath("/html/body/div[4]/div[3]/div[3]/main/div[3]/div[2]/div/p[4]/i"));
-                descriptions = description.getText();
-                strategy = driver.findElement(new By.ByXPath("/html/body/div[4]/div[3]/div[3]/main/div[3]/div[2]/div/p[11]"));
-                strategies = strategy.getText();
-                characters.add(new Character(descriptions,strategies));
+                wait.until(ExpectedConditions.elementToBeClickable(new By.ByCssSelector("section.pi-item:nth-child(3) > h2:nth-child(1) > a:nth-child(1)")));
+            }
+            catch (Exception e){
 
             }
+            try{
+                names = informationCube.findElement(new By.ByCssSelector(".pi-title > b:nth-child(1)")).getText();
+            }catch (Exception e){
+                try{
+                    names = informationCube.findElement(new By.ByCssSelector(".pi-title > b:nth-child(1)")).getText();
+                }catch (Exception e2){
+                    names = informationCube.findElement(new By.ByCssSelector("h2.pi-item")).getText();
+                }
+            }
+            informationCube = driver.findElement(new By.ByCssSelector(".mw-parser-output"));
+            try{
+                descriptions = informationCube.findElement(new By.ByCssSelector(".mw-parser-output > p:nth-child(17) > i:nth-child(1)")).getText();
+            }catch (Exception e){
+                try{
+                    descriptions = informationCube.findElement(new By.ByCssSelector(".mw-parser-output > p:nth-child(19) > i:nth-child(1)")).getText();
+                }catch (Exception e2){
+                    try{
+                        descriptions = informationCube.findElement(new By.ByCssSelector(".mw-parser-output > p:nth-child(20) > i:nth-child(1)")).getText();
+                    }catch (Exception e3){
+                        descriptions = informationCube.findElement(new By.ByCssSelector("figcaption.pi-item-spacing")).getText();
+                    }
+                }
+            }
+
+            try{
+                healths = informationCube.findElement(new By.ByCssSelector("section.pi-item:nth-child(3) > div:nth-child(3) > div:nth-child(2)")).getText();
+            }catch (Exception e){
+                healths = informationCube.findElement(new By.ByCssSelector("div.pi-item:nth-child(3) > div:nth-child(2)")).getText();
+            }
+            try{
+                weapons = informationCube.findElement(new By.ByCssSelector("section.pi-item:nth-child(3) > div:nth-child(4) > div:nth-child(2)")).getText();
+            }catch (Exception e){
+                weapons = informationCube.findElement(new By.ByCssSelector("div.pi-item:nth-child(4) > div:nth-child(2)")).getText();
+            }
+            try{
+                ammos = informationCube.findElement(new By.ByCssSelector("section.pi-item:nth-child(3) > div:nth-child(5) > div:nth-child(2)")).getText();
+            }catch (Exception e){
+                ammos = informationCube.findElement(new By.ByCssSelector("div.pi-item:nth-child(5) > div:nth-child(2)")).getText();
+            }
+            try{
+                rarities = informationCube.findElement(new By.ByCssSelector("section.pi-item:nth-child(3) > div:nth-child(11) > div:nth-child(1)")).getText();
+            }catch (Exception e){
+                try{
+                    rarities = informationCube.findElement(new By.ByCssSelector("section.pi-item:nth-child(3) > div:nth-child(12) > div:nth-child(1)")).getText();
+                }catch (Exception e2){
+                    try{
+                        rarities = informationCube.findElement(new By.ByCssSelector("section.pi-item:nth-child(3) > div:nth-child(10) > div:nth-child(1)")).getText();
+                    }catch (Exception e3){
+                        rarities = informationCube.findElement(new By.ByCssSelector("div.pi-data-value:nth-child(1)")).getText();
+                    }
+                }
+            }
+                characters.add(new Character(names,descriptions,healths,weapons,ammos,rarities));
+
+                System.out.println("Character Name: " + names);
+                System.out.println("Character Description: " + descriptions);
+                System.out.println("Character Health: " + healths);
+                System.out.println("Character Weapon: " + weapons);
+                System.out.println("Character Ammo: " + ammos);
+                System.out.println("Character Rarity: " + rarities);
+
         }
         return characters;
     }
