@@ -8,11 +8,9 @@ public class Character {
     String abilitiesName;
     String fpsClass;
 
-    String rarities;
-
     String description;
 
-    String ammo;
+    String strategy;
 
     public Character(String name, String variantsName, String image, String health, String primaryWeapon, String primaryWeaponDamage, String abilitiesName, String fpsClass) {
         this.name = name;
@@ -25,16 +23,13 @@ public class Character {
         this.fpsClass = fpsClass;
     }
 
-    public Character(String name, String health, String primaryWeapon, String primaryWeaponDamage) {
+    public Character(String name, String health, String image, String primaryWeapon, String primaryWeaponDamage) {
     }
 
-    public Character(String name, String description, String health, String weapon, String ammo, String rarity ) {
+    public Character(String name, String description, String strategy ) {
         this.name = name;
         this.description = description;
-        this.health = health;
-        this.primaryWeapon = weapon;
-        this.ammo = ammo;
-        this.rarities = rarity;
+        this.strategy = strategy;
     }
 
     public String getName() {
@@ -101,28 +96,12 @@ public class Character {
         this.fpsClass = fpsClass;
     }
 
-    public String getRarities() {
-        return rarities;
-    }
-
-    public void setRarities(String rarities) {
-        this.rarities = rarities;
-    }
-
     public String getDescription() {
         return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getAmmo() {
-        return ammo;
-    }
-
-    public void setAmmo(String ammo) {
-        this.ammo = ammo;
     }
 
     @Override
@@ -136,8 +115,8 @@ public class Character {
                 ", primaryWeaponDamage='" + primaryWeaponDamage + '\'' +
                 ", abilitiesName='" + abilitiesName + '\'' +
                 ", fpsClass='" + fpsClass + '\'' +
-                ", strategies='" + rarities + '\'' +
                 ", description='" + description + '\'' +
+                ", strategy='" + strategy + '\'' +
                 '}';
     }
 }
