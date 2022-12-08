@@ -12,24 +12,24 @@ public class Character {
 
     String strategy;
 
-    public Character(String name, String variantsName, String image, String health, String primaryWeapon, String primaryWeaponDamage, String abilitiesName, String fpsClass) {
+    public Character(String name, String image, String health, String variantsName, String primaryWeapon, String primaryWeaponDamage, String abilitiesName, String fpsClass) {
         this.name = name;
-        this.variantsName = variantsName;
         this.image = image;
         this.health = health;
+        this.variantsName = variantsName;
         this.primaryWeapon = primaryWeapon;
         this.primaryWeaponDamage = primaryWeaponDamage;
         this.abilitiesName = abilitiesName;
         this.fpsClass = fpsClass;
     }
 
-    public Character(String name, String health, String image, String primaryWeapon, String primaryWeaponDamage) {
-    }
-
     public Character(String name, String description, String strategy ) {
         this.name = name;
         this.description = description;
         this.strategy = strategy;
+    }
+
+    public Character(String name, String health, String image, String primaryWeapon, String primaryWeaponDamage) {
     }
 
     public String getName() {
@@ -108,9 +108,9 @@ public class Character {
     public String toString() {
         return "Character{" +
                 "name='" + name + '\'' +
-                ", variantsName='" + variantsName + '\'' +
                 ", image='" + image + '\'' +
                 ", health='" + health + '\'' +
+                ", variants='" + variantsName + '\'' +
                 ", primaryWeapon='" + primaryWeapon + '\'' +
                 ", primaryWeaponDamage='" + primaryWeaponDamage + '\'' +
                 ", abilitiesName='" + abilitiesName + '\'' +

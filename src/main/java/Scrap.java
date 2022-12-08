@@ -21,7 +21,12 @@ public class Scrap {
     File file;
 
     List<Character> characters = new ArrayList<>();
+
+    List<Character> charactersTables = new ArrayList<>();
+    List<Character> charactersURLs = new ArrayList<>();
     List<Variant> variants = new ArrayList<>();
+    List<Variant> variantsTables = new ArrayList<>();
+    List<Variant> variantsURLs = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
     boolean salir = false;
 
@@ -42,28 +47,36 @@ public class Scrap {
             if (opcionScrap == 1) {
                 // Ir a la pagina Web.
                 driver.get("https://plantsvszombies.fandom.com/wiki/Plants_(PvZ:_GW2)");
-                // Este es la lista de las URLs.
-                List<String> urls;
-                List<String> urlsSupport;
+                // Esta es la lista de las URLs de characters.
+                List<String> urls = null;
+                // Esta es la lista de las URLs de variantes.
+                List<String> urlsSupport = null;
+                //Creamos un driverWait para ir esperando por si queremos cambiar de pagina o darle click a un boton.
                 WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
+                //LLama al metodo creado abajo de este codigo que nos clicka las cookies
                 clicarBotonCookie(driver, driverWait);
-                getCharacterInfoTable(driver);
-                getVariantInfoTable(driver);
+                charactersTables = getCharacterInfoTable(driver, driverWait);
+                CSV csvTables = new CSV(charactersTables);
+                getVariantInfoTable(driver,driverWait);
                 urls = getCharactersURL(driver,driverWait);
-                urls = getVariantsURL(driver,driverWait);
-                getCharacterInfoURL(driver,urls);
-                getVariantInfoURL(driver,urls);
+                urlsSupport = getVariantsURL(driver,driverWait);
+                getCharacterInfoURL(driver,urls,driverWait);
+                getVariantInfoURL(driver,urlsSupport,driverWait);
 
             } else if (opcionScrap == 2) {
                 // Ir a la pagina Web.
                 driver.get("https://plantsvszombies.fandom.com/wiki/Zombies_(PvZ:_GW2)");
-                // Este es la lista de links.
-                List<String> urls;
-                // Este es la variable que nos hace esperar 30 segundos antes de abrir ciertas cosas.
+                // Esta es la lista de las URLs de characters.
+                List<String> urls = null;
+                // Esta es la lista de las URLs de variantes.
+                List<String> urlsSupport = null;
+                // Creamos un driverWait para ir esperando por si tiene que cambiar de pagina o darle click a algo.
                 WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
-
                 //LLama al metodo creado abajo de este codigo que nos clicka las cookies
                 clicarBotonCookie(driver, driverWait);
+                getCharacterInfoTable(driver, driverWait);
+                urls = getCharactersURL(driver,driverWait);
+                getCharacterInfoURL(driver,urls,driverWait);
 
 
             } else if (opcionScrap == 0) {
@@ -78,8 +91,13 @@ public class Scrap {
 
     //En este metodo utilizamos el webdriver para aceptar las cookies de la pagina que queramos scrappear
     public static void clicarBotonCookie(WebDriver driver, WebDriverWait driverWait) {
-            driverWait.until(ExpectedConditions.elementToBeClickable(new By.ByClassName("NN0_TB_DIsNmMHgJWgT7U"))); //NN0_TB_DIsNmMHgJWgT7U XHcr6qf5Sub2F2zBJ53S_"
-            driver.findElement(new By.ByClassName("NN0_TB_DIsNmMHgJWgT7U")).click();
+            try{
+                driverWait.until(ExpectedConditions.elementToBeClickable(new By.ByClassName("NN0_TB_DIsNmMHgJWgT7U"))); //NN0_TB_DIsNmMHgJWgT7U XHcr6qf5Sub2F2zBJ53S_"
+                driver.findElement(new By.ByClassName("NN0_TB_DIsNmMHgJWgT7U")).click();
+            }catch (Exception e){
+
+            }
+
     }
 
     public List<String> getCharactersURL(WebDriver driver, WebDriverWait wait){
@@ -112,7 +130,7 @@ public class Scrap {
         return urls;
     }
 
-    public List<Character> getCharacterInfoURL(WebDriver driver, List<String> urls){
+    public List<Character> getCharacterInfoURL(WebDriver driver, List<String> urls, WebDriverWait wait){
         String names = "", descriptions = "", strategies = "";
 
 
@@ -204,7 +222,7 @@ public class Scrap {
         return characters;
     }
 
-    public List<Variant> getVariantInfoURL(WebDriver driver, List<String> urls){
+    public List<Variant> getVariantInfoURL(WebDriver driver, List<String> urls, WebDriverWait wait){
         String names = "", descriptions = "", strategies = "";
 
 
@@ -297,7 +315,7 @@ public class Scrap {
     }
 
 
-    public List<Character> getCharacterInfoTable(WebDriver driver) {
+    public List<Character> getCharacterInfoTable(WebDriver driver, WebDriverWait wait) {
         int counting = 0;
         String name = "", image = "", health = "", variants = "", primaryWeapon = "", weaponDamage = "", abilties = "", fpsClass = "";
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
@@ -364,7 +382,7 @@ public class Scrap {
         return characters;
     }
 
-    public List<Variant> getVariantInfoTable(WebDriver driver) {
+    public List<Variant> getVariantInfoTable(WebDriver driver, WebDriverWait wait) {
         int counting = 0;
         String name = "", image = "", health = "", primaryWeapon = "", weaponDamage = "", variantPerk = "", rarity = "";
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
