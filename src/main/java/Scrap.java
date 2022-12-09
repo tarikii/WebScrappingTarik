@@ -1,4 +1,3 @@
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -9,10 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
@@ -52,12 +49,13 @@ public class Scrap {
                 // Esta es la lista de las URLs de variantes.
                 List<String> urlsSupport = null;
                 //Creamos un driverWait para ir esperando por si queremos cambiar de pagina o darle click a un boton.
-                WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
+                WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(50));
                 //LLama al metodo creado abajo de este codigo que nos clicka las cookies
                 clicarBotonCookie(driver, driverWait);
                 charactersTables = getCharacterInfoTable(driver, driverWait);
-                CSV csvTables = new CSV(charactersTables);
-                getVariantInfoTable(driver,driverWait);
+                CSVCharacters csvTables = new CSVCharacters(charactersTables);
+                variantsTables = getVariantInfoTable(driver,driverWait);
+                CSVariants csVariants = new CSVariants(variantsTables);
                 urls = getCharactersURL(driver,driverWait);
                 urlsSupport = getVariantsURL(driver,driverWait);
                 getCharacterInfoURL(driver,urls,driverWait);

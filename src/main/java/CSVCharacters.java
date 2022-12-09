@@ -5,27 +5,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-public class CSV {
+public class CSVCharacters {
 
-    File tables = new File("src/CSVs/charactersTable.csv");
+    File tablesCharacters = new File("src/CSVs/charactersTable.csv");
 
 
-    public CSV(List<Character> characters) {
+    public CSVCharacters(List<Character> characters) {
         CSVWriter csvWriter;
         String[] head = {"Name","Image","Health","Variants","Primary Weapon","Weapon Damage","Abilities","FPSClass"};
-        List<String[]> data = new ArrayList<>();
+        List<String[]> tableCharacters = new ArrayList<>();
         for (Character ch : characters){
-            data.add(new String[] {ch.name,ch.image,ch.health,ch.variantsName,ch.primaryWeapon,ch.primaryWeaponDamage,
+            tableCharacters.add(new String[] {ch.name,ch.image,ch.health,ch.variantsName,ch.primaryWeapon,ch.primaryWeaponDamage,
             ch.abilitiesName,ch.fpsClass});
         }
         try {
-            csvWriter = new CSVWriter(new FileWriter(tables));
+            csvWriter = new CSVWriter(new FileWriter(tablesCharacters));
             csvWriter.writeNext(head);
-            csvWriter.writeAll(data);
+            csvWriter.writeAll(tableCharacters);
             csvWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 }
