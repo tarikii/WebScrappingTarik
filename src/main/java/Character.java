@@ -1,3 +1,7 @@
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Character")
 public class Character {
     String name;
     String variantsName;
@@ -36,6 +40,7 @@ public class Character {
         return name;
     }
 
+    @XmlElement(name="Name")
     public void setName(String name) {
         this.name = name;
     }
@@ -44,6 +49,7 @@ public class Character {
         return variantsName;
     }
 
+    @XmlElement(name="Variant")
     public void setVariantsName(String variantsName) {
         this.variantsName = variantsName;
     }
@@ -52,6 +58,7 @@ public class Character {
         return image;
     }
 
+    @XmlElement(name="ImageURL")
     public void setImage(String image) {
         this.image = image;
     }
@@ -60,6 +67,7 @@ public class Character {
         return health;
     }
 
+    @XmlElement(name="Health")
     public void setHealth(String health) {
         this.health = health;
     }
@@ -68,6 +76,7 @@ public class Character {
         return primaryWeapon;
     }
 
+    @XmlElement(name="PrimaryWeapon")
     public void setPrimaryWeapon(String primaryWeapon) {
         this.primaryWeapon = primaryWeapon;
     }
@@ -76,6 +85,7 @@ public class Character {
         return primaryWeaponDamage;
     }
 
+    @XmlElement(name="WeaponDamage")
     public void setPrimaryWeaponDamage(String primaryWeaponDamage) {
         this.primaryWeaponDamage = primaryWeaponDamage;
     }
@@ -84,6 +94,7 @@ public class Character {
         return abilitiesName;
     }
 
+    @XmlElement(name="Ability")
     public void setAbilitiesName(String abilitiesName) {
         this.abilitiesName = abilitiesName;
     }
@@ -92,6 +103,7 @@ public class Character {
         return fpsClass;
     }
 
+    @XmlElement(name="FpsClass")
     public void setFpsClass(String fpsClass) {
         this.fpsClass = fpsClass;
     }
@@ -100,8 +112,18 @@ public class Character {
         return description;
     }
 
+    @XmlElement(name="Description")
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getStrategy() {
+        return strategy;
+    }
+
+    @XmlElement(name="Strategy")
+    public void setStrategy(String strategy) {
+        this.strategy = strategy;
     }
 
     @Override

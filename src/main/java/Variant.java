@@ -1,3 +1,7 @@
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name="Variant")
 public class Variant {
     String name;
     String image;
@@ -31,6 +35,7 @@ public class Variant {
         return name;
     }
 
+    @XmlElement(name="Name")
     public void setName(String name) {
         this.name = name;
     }
@@ -39,6 +44,7 @@ public class Variant {
         return image;
     }
 
+    @XmlElement(name="ImageURL")
     public void setImage(String image) {
         this.image = image;
     }
@@ -47,6 +53,7 @@ public class Variant {
         return health;
     }
 
+    @XmlElement(name="Health")
     public void setHealth(String health) {
         this.health = health;
     }
@@ -55,6 +62,7 @@ public class Variant {
         return primaryWeapon;
     }
 
+    @XmlElement(name="PrimaryWeapon")
     public void setPrimaryWeapon(String primaryWeapon) {
         this.primaryWeapon = primaryWeapon;
     }
@@ -63,6 +71,7 @@ public class Variant {
         return primaryWeaponDamage;
     }
 
+    @XmlElement(name="WeaponDamage")
     public void setPrimaryWeaponDamage(String primaryWeaponDamage) {
         this.primaryWeaponDamage = primaryWeaponDamage;
     }
@@ -71,6 +80,7 @@ public class Variant {
         return variantPerk;
     }
 
+    @XmlElement(name="Perk")
     public void setVariantPerk(String variantPerk) {
         this.variantPerk = variantPerk;
     }
@@ -79,6 +89,7 @@ public class Variant {
         return rarity;
     }
 
+    @XmlElement(name="Rarity")
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
@@ -86,6 +97,7 @@ public class Variant {
     public String getNames() {
         return names;
     }
+
 
     public void setNames(String names) {
         this.names = names;
@@ -95,6 +107,7 @@ public class Variant {
         return descriptions;
     }
 
+    @XmlElement(name="Description")
     public void setDescriptions(String descriptions) {
         this.descriptions = descriptions;
     }
@@ -103,6 +116,7 @@ public class Variant {
         return strategies;
     }
 
+    @XmlElement(name="Strategy")
     public void setStrategies(String strategies) {
         this.strategies = strategies;
     }
