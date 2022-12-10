@@ -6,10 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVariants {
+public class CSVariantsTable {
     File tablesVariants = new File("src/CSVs/variantsTable.csv");
 
-    public CSVariants(List<Variant> variants) {
+    public CSVariantsTable(List<Variant> variants) {
         CSVWriter csvWriter;
         String[] head = {"Name","Image","Health","Primary Weapon","Weapon Damage","Variant Perk","Rarity"};
         List<String[]> table = new ArrayList<>();

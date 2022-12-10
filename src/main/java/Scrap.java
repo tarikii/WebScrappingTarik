@@ -49,17 +49,19 @@ public class Scrap {
                 // Esta es la lista de las URLs de variantes.
                 List<String> urlsSupport = null;
                 //Creamos un driverWait para ir esperando por si queremos cambiar de pagina o darle click a un boton.
-                WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(50));
+                WebDriverWait driverWait = new WebDriverWait(driver, Duration.ofSeconds(120));
                 //LLama al metodo creado abajo de este codigo que nos clicka las cookies
                 clicarBotonCookie(driver, driverWait);
                 charactersTables = getCharacterInfoTable(driver, driverWait);
-                CSVCharacters csvTables = new CSVCharacters(charactersTables);
+                CSVCharactersTable csvTables = new CSVCharactersTable(charactersTables);
                 variantsTables = getVariantInfoTable(driver,driverWait);
-                CSVariants csVariants = new CSVariants(variantsTables);
+                CSVariantsTable csVariantsTables = new CSVariantsTable(variantsTables);
                 urls = getCharactersURL(driver,driverWait);
                 urlsSupport = getVariantsURL(driver,driverWait);
-                getCharacterInfoURL(driver,urls,driverWait);
-                getVariantInfoURL(driver,urlsSupport,driverWait);
+                charactersURLs = getCharacterInfoURL(driver,urls,driverWait);
+                CSVCharactersURLs urlsCSV = new CSVCharactersURLs(charactersURLs);
+                variantsURLs = getVariantInfoURL(driver,urlsSupport,driverWait);
+                CSVariantsURLs urlsVariantsCSV = new CSVariantsURLs(variantsURLs);
 
             } else if (opcionScrap == 2) {
                 // Ir a la pagina Web.

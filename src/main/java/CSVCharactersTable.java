@@ -5,12 +5,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-public class CSVCharacters {
+public class CSVCharactersTable {
 
     File tablesCharacters = new File("src/CSVs/charactersTable.csv");
 
 
-    public CSVCharacters(List<Character> characters) {
+    public CSVCharactersTable(List<Character> characters) {
         CSVWriter csvWriter;
         String[] head = {"Name","Image","Health","Variants","Primary Weapon","Weapon Damage","Abilities","FPSClass"};
         List<String[]> tableCharacters = new ArrayList<>();
