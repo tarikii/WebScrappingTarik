@@ -27,6 +27,10 @@ public class Character {
         this.fpsClass = fpsClass;
     }
 
+    public Character(){
+
+    }
+
     public Character(String name, String description, String strategy ) {
         this.name = name;
         this.description = description;
@@ -58,7 +62,7 @@ public class Character {
         return image;
     }
 
-    @XmlElement(name="ImageURL")
+    @XmlElement(name="Image_URL")
     public void setImage(String image) {
         this.image = image;
     }
@@ -76,7 +80,7 @@ public class Character {
         return primaryWeapon;
     }
 
-    @XmlElement(name="PrimaryWeapon")
+    @XmlElement(name="Primary_Weapon")
     public void setPrimaryWeapon(String primaryWeapon) {
         this.primaryWeapon = primaryWeapon;
     }
@@ -85,7 +89,7 @@ public class Character {
         return primaryWeaponDamage;
     }
 
-    @XmlElement(name="WeaponDamage")
+    @XmlElement(name="Weapon_Damage")
     public void setPrimaryWeaponDamage(String primaryWeaponDamage) {
         this.primaryWeaponDamage = primaryWeaponDamage;
     }
@@ -103,16 +107,16 @@ public class Character {
         return fpsClass;
     }
 
-    @XmlElement(name="FpsClass")
+    @XmlElement(name="Fps_Class")
     public void setFpsClass(String fpsClass) {
         this.fpsClass = fpsClass;
     }
+
 
     public String getDescription() {
         return description;
     }
 
-    @XmlElement(name="Description")
     public void setDescription(String description) {
         this.description = description;
     }
@@ -121,7 +125,6 @@ public class Character {
         return strategy;
     }
 
-    @XmlElement(name="Strategy")
     public void setStrategy(String strategy) {
         this.strategy = strategy;
     }

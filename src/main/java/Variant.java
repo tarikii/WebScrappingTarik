@@ -25,6 +25,10 @@ public class Variant {
         this.rarity = rarity;
     }
 
+    public Variant(){
+
+    }
+
     public Variant(String names, String descriptions, String strategies) {
         this.names = names;
         this.descriptions = descriptions;
@@ -44,7 +48,7 @@ public class Variant {
         return image;
     }
 
-    @XmlElement(name="ImageURL")
+    @XmlElement(name="Image_URL")
     public void setImage(String image) {
         this.image = image;
     }
@@ -62,7 +66,7 @@ public class Variant {
         return primaryWeapon;
     }
 
-    @XmlElement(name="PrimaryWeapon")
+    @XmlElement(name="Primary_Weapon")
     public void setPrimaryWeapon(String primaryWeapon) {
         this.primaryWeapon = primaryWeapon;
     }
@@ -71,7 +75,7 @@ public class Variant {
         return primaryWeaponDamage;
     }
 
-    @XmlElement(name="WeaponDamage")
+    @XmlElement(name="Weapon_Damage")
     public void setPrimaryWeaponDamage(String primaryWeaponDamage) {
         this.primaryWeaponDamage = primaryWeaponDamage;
     }
@@ -106,8 +110,6 @@ public class Variant {
     public String getDescriptions() {
         return descriptions;
     }
-
-    @XmlElement(name="Description")
     public void setDescriptions(String descriptions) {
         this.descriptions = descriptions;
     }
@@ -115,8 +117,6 @@ public class Variant {
     public String getStrategies() {
         return strategies;
     }
-
-    @XmlElement(name="Strategy")
     public void setStrategies(String strategies) {
         this.strategies = strategies;
     }

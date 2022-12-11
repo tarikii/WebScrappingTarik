@@ -56,6 +56,7 @@ public class Scrap {
                 CSVCharactersTable csvTables = new CSVCharactersTable(charactersTables);
                 variantsTables = getVariantInfoTable(driver,driverWait);
                 CSVariantsTable csVariantsTables = new CSVariantsTable(variantsTables);
+                JAXB xmlTables = new JAXB(charactersTables,variantsTables);
                 urls = getCharactersURL(driver,driverWait);
                 urlsSupport = getVariantsURL(driver,driverWait);
                 charactersURLs = getCharacterInfoURL(driver,urls,driverWait);
