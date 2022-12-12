@@ -35,89 +35,83 @@ public class Variant {
         this.strategies = strategies;
     }
 
-    public String getName() {
-        return name;
-    }
-
     @XmlElement(name="Name")
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getImage() {
-        return image;
+    public String getName() {
+        return name;
     }
 
     @XmlElement(name="Image_URL")
     public void setImage(String image) {
         this.image = image;
     }
-
-    public String getHealth() {
-        return health;
+    public String getImage() {
+        return image;
     }
 
     @XmlElement(name="Health")
     public void setHealth(String health) {
         this.health = health;
     }
-
-    public String getPrimaryWeapon() {
-        return primaryWeapon;
+    public String getHealth() {
+        return health;
     }
 
     @XmlElement(name="Primary_Weapon")
     public void setPrimaryWeapon(String primaryWeapon) {
         this.primaryWeapon = primaryWeapon;
     }
-
-    public String getPrimaryWeaponDamage() {
-        return primaryWeaponDamage;
+    public String getPrimaryWeapon() {
+        return primaryWeapon;
     }
 
     @XmlElement(name="Weapon_Damage")
     public void setPrimaryWeaponDamage(String primaryWeaponDamage) {
         this.primaryWeaponDamage = primaryWeaponDamage;
     }
-
-    public String getVariantPerk() {
-        return variantPerk;
+    public String getPrimaryWeaponDamage() {
+        return primaryWeaponDamage;
     }
 
     @XmlElement(name="Perk")
     public void setVariantPerk(String variantPerk) {
         this.variantPerk = variantPerk;
     }
-
-    public String getRarity() {
-        return rarity;
+    public String getVariantPerk() {
+        return variantPerk;
     }
 
     @XmlElement(name="Rarity")
     public void setRarity(String rarity) {
         this.rarity = rarity;
     }
+    public String getRarity() {
+        return rarity;
+    }
 
+    @XmlElement(name="Names")
+    public void setNames(String names) {
+        this.names = names;
+    }
     public String getNames() {
         return names;
     }
 
-
-    public void setNames(String names) {
-        this.names = names;
-    }
-
-    public String getDescriptions() {
-        return descriptions;
-    }
+    @XmlElement(name="Descriptions")
     public void setDescriptions(String descriptions) {
         this.descriptions = descriptions;
     }
-
-    public String getStrategies() {
-        return strategies;
+    public String getDescriptions() {
+        return descriptions;
     }
+
+    @XmlElement(name="Strategies")
     public void setStrategies(String strategies) {
         this.strategies = strategies;
+    }
+    public String getStrategies() {
+        return strategies;
     }
 }

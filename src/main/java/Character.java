@@ -113,10 +113,12 @@ public class Character {
     }
 
 
+
     public String getDescription() {
         return description;
     }
 
+    @XmlElement(name = "Description")
     public void setDescription(String description) {
         this.description = description;
     }
@@ -125,6 +127,7 @@ public class Character {
         return strategy;
     }
 
+    @XmlElement(name = "Strategy")
     public void setStrategy(String strategy) {
         this.strategy = strategy;
     }

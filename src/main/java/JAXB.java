@@ -1,13 +1,12 @@
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
+import jakarta.xml.bind.*;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 public class JAXB {
-    File fileCharactersXML = new File("src/XMLs/characters.xml");
-    File fileVariantsXML = new File("src/XMLs/variants.xml");
+    File fileCharactersXML = new File("src/characters.xml");
+    File fileVariantsXML = new File("src/variants.xml");
     Characters charactersInfo = new Characters();
     Character character;
     Variants variantsInfo = new Variants();
@@ -17,6 +16,7 @@ public class JAXB {
 
 
     JAXB(List<Character> characters, List<Variant> variants) {
+        fileCharactersXML.delete();
         try {
             jaxbContext = JAXBContext.newInstance(Characters.class);
 
@@ -33,6 +33,8 @@ public class JAXB {
         } catch (JAXBException e) {
             e.printStackTrace();
         }
+
+        fileVariantsXML.delete();
 
         try{
             jaxbContext = JAXBContext.newInstance(Variants.class);
