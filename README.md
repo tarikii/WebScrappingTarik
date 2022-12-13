@@ -1,4 +1,4 @@
-#Proyecto Webscrapping Tarik Aabouch:
+# Proyecto Webscrapping Tarik Aabouch:
 
 >- Este proyecto trata de hacer un WebScrapping con ayuda de la clase WebDriver a dos webs, una que contiene una tabla de Plantas y otra de Zombies. Las informaciones se recogen con WebElement y se generan luego en formato CSV y XML con la libreria de Maven openCSV y JAXB.
 >- El proyecto también contiene un JavaDoc, que explica cada clase, sus metodos y sus atributos
