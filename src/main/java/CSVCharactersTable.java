@@ -10,6 +10,9 @@ public class CSVCharactersTable {
     File tablesCharacters = new File("src/CSVs/charactersTable.csv");
 
 
+    /**
+     * Este constructor recibe el head, y los arryas de la clase Character
+     */
     public CSVCharactersTable(List<Character> characters) {
         CSVWriter csvWriter;
         String[] head = {"Name","Image","Health","Variants","Primary Weapon","Weapon Damage","Abilities","FPSClass"};

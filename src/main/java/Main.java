@@ -16,6 +16,9 @@ public class Main {
     Scrap scrap = new Scrap();
 
 
+    /**
+     * Llamamos al metodo start, para que empieze a scrappear
+     */
     scrap.start();
   }
 }

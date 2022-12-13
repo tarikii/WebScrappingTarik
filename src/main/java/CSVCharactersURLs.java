@@ -10,6 +10,9 @@ public class CSVCharactersURLs {
     File linksCharacters = new File("src/CSVs/charactersURLs.csv");
 
 
+    /**
+     * Este constructor recibe el head, y los arryas de la clase Character
+     */
     public CSVCharactersURLs(List<Character> characters) {
         CSVWriter csvWriter;
         String[] head = {"Name","Description","Strategy"};

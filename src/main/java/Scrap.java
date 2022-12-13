@@ -27,6 +27,9 @@ public class Scrap {
     static Scanner scanner = new Scanner(System.in);
     boolean salir = false;
 
+    /**
+     * Este metodo hara absolutamente todo1 el scrappeo, tanto el de las tablas como el de las URLs
+     */
     public void start() {
         System.out.println(System.getenv("PATH"));
         System.out.println(System.getenv("HOME"));
@@ -35,6 +38,9 @@ public class Scrap {
         FirefoxOptions options = new FirefoxOptions();
         WebDriver driver = new FirefoxDriver(options);
 
+        /**
+         * Aqui mostrara un bucle, donde mostrara 3 opciones, que decidira el usuario que scrappear
+         */
 
         while (!salir){
             System.out.println("Que quieres scrappear: 1 - Plantas, 2 - Zombies, 0 - Salir");
@@ -56,7 +62,8 @@ public class Scrap {
                 CSVCharactersTable csvTables = new CSVCharactersTable(charactersTables);
                 variantsTables = getVariantInfoTable(driver,driverWait);
                 CSVariantsTable csVariantsTables = new CSVariantsTable(variantsTables);
-                JAXB xmlTables = new JAXB(charactersTables,variantsTables);
+                JAXBCharacter xmlCharacterTables = new JAXBCharacter(charactersTables);
+                JAXBVariant xmlVariantTables = new JAXBVariant(variantsTables);
                 urls = getCharactersURL(driver,driverWait);
                 urlsSupport = getVariantsURL(driver,driverWait);
                 charactersURLs = getCharacterInfoURL(driver,urls,driverWait);
@@ -101,6 +108,9 @@ public class Scrap {
 
     }
 
+    /**
+     * Pilla las URLs de los characters
+     */
     public List<String> getCharactersURL(WebDriver driver, WebDriverWait wait){
         List<WebElement> links = driver.findElements(new By.ByXPath("/html/body/div[4]/div[3]/div[2]/main/div[3]/div[2]/div/div[2]/div//table/tbody//tr//th/a"));
         List<String> urls = new ArrayList<>();
@@ -116,6 +126,9 @@ public class Scrap {
         return urls;
     }
 
+    /**
+     * Pilla las URLs de las variantes
+     */
     public List<String> getVariantsURL(WebDriver driver, WebDriverWait wait){
         List<WebElement> links = driver.findElements(new By.ByXPath("/html/body/div[4]/div[3]/div[2]/main/div[3]/div[2]/div/div[3]/div//table/tbody//tr//th/a"));
         List<String> urls = new ArrayList<>();
@@ -131,6 +144,9 @@ public class Scrap {
         return urls;
     }
 
+    /**
+     * Pilla la informacion de las URLs
+     */
     public List<Character> getCharacterInfoURL(WebDriver driver, List<String> urls, WebDriverWait wait){
         String names = "", descriptions = "", strategies = "";
 

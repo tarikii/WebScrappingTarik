@@ -11,6 +11,9 @@ public class CSVariantsURLs {
     File linksVariants = new File("src/CSVs/variantsURLs.csv");
 
 
+    /**
+     * Este constructor recibe el head, y los arryas de la clase Variant
+     */
     public CSVariantsURLs(List<Variant> variants) {
         CSVWriter csvWriter;
         String[] head = {"Name","Description","Strategy"};

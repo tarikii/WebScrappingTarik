@@ -6,9 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase se encargara de transformar el scrappeo en un archivo CSV
+ */
 public class CSVariantsTable {
     File tablesVariants = new File("src/CSVs/variantsTable.csv");
 
+    /**
+     * Este constructor recibe el head, y los arryas de la clase Variant
+     */
     public CSVariantsTable(List<Variant> variants) {
         CSVWriter csvWriter;
         String[] head = {"Name","Image","Health","Primary Weapon","Weapon Damage","Variant Perk","Rarity"};
